@@ -24,13 +24,15 @@
       text-align: center;
       color: #fff;
       position: relative;
+      padding: 1rem;
     }
 
     h1 {
-      font-size: 5rem;
+      font-size: 4rem;
       color: gold;
       text-shadow: 0 0 30px orange, 0 0 60px gold, 0 0 120px red;
       animation: glow 2s infinite alternate;
+      line-height: 1.2;
     }
 
     @keyframes glow {
@@ -43,18 +45,20 @@
     }
 
     .message {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       color: #ffdf70;
-      margin-top: 15px;
+      margin-top: 10px;
       text-shadow: 0 0 10px yellow;
+      max-width: 90%;
     }
 
     .from-message {
-      margin-top: 20px;
-      font-size: 1.4rem;
+      margin-top: 15px;
+      font-size: 1.2rem;
       color: #00ffee;
       text-shadow: 0 0 20px cyan, 0 0 40px #00ffff;
       animation: fade 3s infinite alternate;
+      max-width: 90%;
     }
 
     @keyframes fade {
@@ -68,25 +72,25 @@
 
     .lamp {
       position: relative;
-      width: 200px;
-      height: 120px;
+      width: 150px;
+      height: 90px;
       background: #ffbb00;
-      border-radius: 0 0 120px 120px;
-      margin-top: 40px;
-      box-shadow: 0 0 50px rgba(255, 200, 0, 0.8);
+      border-radius: 0 0 100px 100px;
+      margin-top: 30px;
+      box-shadow: 0 0 40px rgba(255, 200, 0, 0.8);
     }
 
     .flame {
       position: absolute;
-      top: -70px;
+      top: -60px;
       left: 50%;
       transform: translateX(-50%);
-      width: 40px;
-      height: 80px;
+      width: 30px;
+      height: 60px;
       background: radial-gradient(circle at bottom, orange 20%, gold 60%, transparent 70%);
       border-radius: 50%;
       animation: flicker 0.2s infinite alternate;
-      box-shadow: 0 0 60px 15px orange;
+      box-shadow: 0 0 50px 10px orange;
     }
 
     @keyframes flicker {
@@ -114,8 +118,8 @@
 
     .spark {
       position: absolute;
-      width: 4px;
-      height: 4px;
+      width: 3px;
+      height: 3px;
       border-radius: 50%;
       animation: spark 1.5s ease-out forwards;
     }
@@ -131,13 +135,13 @@
       }
     }
 
-    /* Floating diyas around */
+    /* Floating Diyas */
     .floating-diya {
       position: absolute;
-      width: 80px;
-      height: 50px;
+      width: 60px;
+      height: 40px;
       background: #ffbb00;
-      border-radius: 0 0 50px 50px;
+      border-radius: 0 0 40px 40px;
       bottom: 10px;
       box-shadow: 0 0 30px #ffaa00;
       animation: float 6s ease-in-out infinite alternate;
@@ -146,11 +150,11 @@
     .floating-diya::before {
       content: '';
       position: absolute;
-      top: -30px;
+      top: -25px;
       left: 50%;
       transform: translateX(-50%);
-      width: 20px;
-      height: 30px;
+      width: 15px;
+      height: 25px;
       border-radius: 50%;
       background: radial-gradient(circle at bottom, orange 10%, gold 60%, transparent 80%);
       animation: flicker 0.2s infinite alternate;
@@ -161,7 +165,58 @@
         transform: translateY(0);
       }
       100% {
-        transform: translateY(-20px);
+        transform: translateY(-15px);
+      }
+    }
+
+    /* 🌐 Responsive Design */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 3rem;
+      }
+      .message {
+        font-size: 1.2rem;
+      }
+      .from-message {
+        font-size: 1.1rem;
+      }
+      .lamp {
+        width: 120px;
+        height: 70px;
+      }
+      .flame {
+        width: 25px;
+        height: 50px;
+        top: -50px;
+      }
+      .floating-diya {
+        width: 50px;
+        height: 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.4rem;
+      }
+      .message {
+        font-size: 1rem;
+      }
+      .from-message {
+        font-size: 1rem;
+      }
+      .lamp {
+        width: 100px;
+        height: 60px;
+      }
+      .flame {
+        width: 20px;
+        height: 40px;
+        top: -40px;
+      }
+      .floating-diya {
+        width: 40px;
+        height: 25px;
       }
     }
   </style>
@@ -178,10 +233,10 @@
   </div>
 
   <!-- Floating Diyas -->
-  <div class="floating-diya" style="left:10%; animation-delay:0s;"></div>
-  <div class="floating-diya" style="left:30%; animation-delay:1s;"></div>
-  <div class="floating-diya" style="left:70%; animation-delay:2s;"></div>
-  <div class="floating-diya" style="left:90%; animation-delay:3s;"></div>
+  <div class="floating-diya" style="left:5%; animation-delay:0s;"></div>
+  <div class="floating-diya" style="left:25%; animation-delay:1s;"></div>
+  <div class="floating-diya" style="left:60%; animation-delay:2s;"></div>
+  <div class="floating-diya" style="left:85%; animation-delay:3s;"></div>
 
   <script>
     // 🎆 Fireworks Animation
@@ -206,8 +261,9 @@
       setTimeout(() => spark.remove(), 1500);
     }
 
-    setInterval(createSpark, 100);
+    setInterval(createSpark, 120);
   </script>
 </body>
 </html>
+
 
