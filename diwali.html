@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Diwali ✨</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      width: 100vw;
+      background: radial-gradient(circle at center, #0a0a1f, #000);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 5rem;
+      color: gold;
+      text-shadow: 0 0 30px orange, 0 0 60px gold, 0 0 120px red;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 20px orange, 0 0 40px gold;
+      }
+      to {
+        text-shadow: 0 0 60px gold, 0 0 100px orange, 0 0 150px red;
+      }
+    }
+
+    .message {
+      font-size: 1.6rem;
+      color: #ffdf70;
+      margin-top: 15px;
+      text-shadow: 0 0 10px yellow;
+    }
+
+    .from-message {
+      margin-top: 20px;
+      font-size: 1.4rem;
+      color: #00ffee;
+      text-shadow: 0 0 20px cyan, 0 0 40px #00ffff;
+      animation: fade 3s infinite alternate;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0.7;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .lamp {
+      position: relative;
+      width: 200px;
+      height: 120px;
+      background: #ffbb00;
+      border-radius: 0 0 120px 120px;
+      margin-top: 40px;
+      box-shadow: 0 0 50px rgba(255, 200, 0, 0.8);
+    }
+
+    .flame {
+      position: absolute;
+      top: -70px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 80px;
+      background: radial-gradient(circle at bottom, orange 20%, gold 60%, transparent 70%);
+      border-radius: 50%;
+      animation: flicker 0.2s infinite alternate;
+      box-shadow: 0 0 60px 15px orange;
+    }
+
+    @keyframes flicker {
+      from {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.9;
+      }
+      to {
+        transform: translateX(-50%) scale(1.1);
+        opacity: 1;
+      }
+    }
+
+    /* Fireworks */
+    .fireworks {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .spark {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      animation: spark 1.5s ease-out forwards;
+    }
+
+    @keyframes spark {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--x), var(--y)) scale(0);
+        opacity: 0;
+      }
+    }
+
+    /* Floating diyas around */
+    .floating-diya {
+      position: absolute;
+      width: 80px;
+      height: 50px;
+      background: #ffbb00;
+      border-radius: 0 0 50px 50px;
+      bottom: 10px;
+      box-shadow: 0 0 30px #ffaa00;
+      animation: float 6s ease-in-out infinite alternate;
+    }
+
+    .floating-diya::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 30px;
+      border-radius: 50%;
+      background: radial-gradient(circle at bottom, orange 10%, gold 60%, transparent 80%);
+      animation: flicker 0.2s infinite alternate;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-20px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="fireworks"></div>
+
+  <h1>🪔 Happy Diwali 🪔</h1>
+  <p class="message">May your life be filled with light, joy, and prosperity!</p>
+  <p class="from-message">💫 Aamir Bhai wishes you all a very Happy and Prosperous Diwali! 💫</p>
+
+  <div class="lamp">
+    <div class="flame"></div>
+  </div>
+
+  <!-- Floating Diyas -->
+  <div class="floating-diya" style="left:10%; animation-delay:0s;"></div>
+  <div class="floating-diya" style="left:30%; animation-delay:1s;"></div>
+  <div class="floating-diya" style="left:70%; animation-delay:2s;"></div>
+  <div class="floating-diya" style="left:90%; animation-delay:3s;"></div>
+
+  <script>
+    // 🎆 Fireworks Animation
+    const fireworks = document.querySelector(".fireworks");
+
+    function createSpark() {
+      const spark = document.createElement("div");
+      spark.classList.add("spark");
+
+      const x = (Math.random() - 0.5) * 800 + "px";
+      const y = (Math.random() - 0.5) * 800 + "px";
+      const color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+
+      spark.style.setProperty("--x", x);
+      spark.style.setProperty("--y", y);
+      spark.style.background = color;
+
+      spark.style.left = Math.random() * 100 + "%";
+      spark.style.top = Math.random() * 100 + "%";
+
+      fireworks.appendChild(spark);
+      setTimeout(() => spark.remove(), 1500);
+    }
+
+    setInterval(createSpark, 100);
+  </script>
+</body>
+</html>
